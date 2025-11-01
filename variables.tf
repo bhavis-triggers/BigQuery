@@ -12,11 +12,11 @@ variable "gcp_region" {
   type        = string
   default = "asia-south2"
 }   
-variable "gcp_svc_key" {
+/*variable "gcp_svc_key" {
   description = "Path to the GCP service account key file"
   type        = string
   default = "bhavis-triggers/BigQuery/gleaming-nomad-474505-r3-fb906b46b1b7.json"
-}
+}*/
 
 variable "env"{
     type = string

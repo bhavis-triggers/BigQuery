@@ -1,0 +1,27 @@
+name: terraform initializing
+
+on:
+  push:
+    branches:
+      - feature-*
+
+jobs:
+  terraform-chg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v5
+      - name: setup
+        uses: hashicorp/setup-terraform@v3
+          #with:
+           # terraform_version: "1.1.7"
+      - name: Run terraform init
+        run: terraform init
+      - name: Run terraform validate & plan
+        run: |
+          echo "terraform validate"
+          echo "terraform plan"
+
+
+      
+

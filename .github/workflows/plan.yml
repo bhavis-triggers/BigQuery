@@ -18,9 +18,11 @@ jobs:
       - name: Run terraform init
         run: terraform init
       - name: Run terraform validate & plan
-        run: |
-          echo "terraform validate"
-          echo "terraform plan"
+        run: terraform validate
+          #echo ""
+          #echo "terraform plan"
+      - name: terraform plan
+        run: terraform plan
 
 
       

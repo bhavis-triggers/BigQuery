@@ -6,7 +6,7 @@ resource "google_bigquery_dataset" "dataset" {
   dataset_id                  = "example_dataset_${var.env}"
   friendly_name               = "testing dataset creation"
   description                 = "This is a test description"
-  location                    = var.region
+  location                    = var.gcp_region
   labels = merge({
     env = var.env
     project = var.gcp_project_id

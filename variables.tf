@@ -18,7 +18,7 @@ variable "gcp_region" {
 }*/
 
 variable "env"{
-    type = "string"
+    type = string
     description="working environment gets tagged"
     default = "dev"
 }

@@ -12,7 +12,7 @@ locals {
   dataset = flatten([
     for ds in local.cfg["dataset"] : {
       dataset_id = "${ds.dataset_id}_${var.env}"
-      friendly_name               = try("${ds.dataset_name} ${var.env}", ds.id)
+      friendly_name               = try("${ds.dataset_name}", ds.dataset_id)
       description                 = try(ds.dataset_desc, null)
       #access_roles                = try(ds.access_roles, {})
       location                    = try(ds.location, "asia-south2")

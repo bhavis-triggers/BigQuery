@@ -25,14 +25,14 @@ variable "gcp_region" {
   default = "asia-south2"
 }   
 
-variable "access"{
+/*variable "access"{
     type = list(object({
         role = string
         group_by_email = optional(string)
         user_by_email = optional(string)
     }))
     default=[]
-}
+}*/
 
 variable "dataset"{
     type = list(object({

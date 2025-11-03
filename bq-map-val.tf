@@ -14,7 +14,7 @@ locals {
       dataset_id = "${ds.id}_${var.env}"
       friendly_name               = try("${ds.name} ${var.env}", ds.id)
       description                 = try(ds.description, null)
-      access_roles                = try(ds.access_roles, {})
+      #access_roles                = try(ds.access_roles, {})
       location                    = try(ds.location, "asia-south2")
       labels                      = merge(local.default_label, try(ds.labels,{}))
     }

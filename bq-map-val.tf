@@ -26,7 +26,7 @@ module "dataset" {
   #for_each = local.dataset_config
 
   dataset = local.dataset
-  project = var.gcp_project_id
+  #project = var.gcp_project_id
   # Send merged mandatory + custom labels
   labels = merge(
     local.mandatory_labels,

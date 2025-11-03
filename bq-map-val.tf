@@ -9,7 +9,7 @@ locals {
     #app-own = var.app-own
     #res-name = var.res-name
   }
-  dataset= flatten([
+  dataset = flatten([
     for ds in local.cfg["dataset"] : {
       dataset_id = "${ds.id}_${var.env}"
       friendly_name               = try("${ds.name} ${var.env}", ds.id)

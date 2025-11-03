@@ -6,6 +6,11 @@ dataset:
     labels:
       owner: "marketing"
       sensitivity: "high"
+      app-own: "unknown"
+      res-name: "mktg"
 
   finance:
     dataset_id: "fin_dataset"
+    labels:
+      app-own: "unknown"
+      res-name: "mktg"

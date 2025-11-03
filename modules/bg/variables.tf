@@ -47,3 +47,7 @@ variable "dataset"{
         }))*/
     }))
 }
+validation {
+        condition = contains(keys("app-own"), var.dataset.labels) && contains(keys("res-name"), var.dataset.labels)
+        error_message = "You must provide mandatory labels: environment and managed_by."
+  }

@@ -16,7 +16,7 @@ locals {
       description                 = try(ds.description, null)
       access_roles                = try(ds.access_roles, {})
       location                    = try(ds.location, "asia-south2")
-      labels                      = merge(local.default_labels, try(ds.labels,{}))
+      labels                      = merge(local.default_label, try(ds.labels,{}))
     }
   ])
 }
@@ -28,10 +28,10 @@ module "dataset" {
   dataset = local.dataset
   #project = var.gcp_project_id
   # Send merged mandatory + custom labels
-  labels = merge(
-    local.mandatory_labels,
-    try(each.value.labels, {})   # safe fallback if YAML missing
-  )
+  #labels = merge(
+  #  local.default_label,
+  #  try(each.value.labels, {})   # safe fallback if YAML missing
+  #)
 }
 /*locals{
     cfg = yamldecode(file("${path.module}/bq-config.yaml"))

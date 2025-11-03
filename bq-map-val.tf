@@ -5,9 +5,9 @@ locals {
   default_label = {           #default labels - user provides mandatory or custom labels
     environment = var.environment
     #project_id = var.gcp_project_id
-    #app-id = var.app-id
-    #app-own = var.app-own
-    #res-name = var.res-name
+    app-id = var.app-id
+    app-own = var.app-own
+    res-name = var.res-name
   }
   dataset = flatten([
     for ds in local.cfg["dataset"] : {

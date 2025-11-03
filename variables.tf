@@ -38,7 +38,7 @@ variable "environment" {
   type    = string
   default = "dev"
 }
-/*
+
 variable "app-id"{
   type = string
 }
@@ -49,4 +49,4 @@ variable "app-own"{
 
 variable "res-name"{
   type = string
-}*/
+}

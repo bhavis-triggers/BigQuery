@@ -31,7 +31,7 @@ variable "resource_tags"{
 
 variable "config_file" {
   type    = string
-  default = "bq-map-val.yaml"
+  default = "bq-config.yaml"
 }
 
 variable "environment" {

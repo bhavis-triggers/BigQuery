@@ -28,3 +28,13 @@ variable "resource_tags"{
     type = map(string)
     default = {}
 }
+
+variable "config_file" {
+  type    = string
+  default = "bq-map-val.yaml"
+}
+
+variable "environment" {
+  type    = string
+  default = "dev"
+}

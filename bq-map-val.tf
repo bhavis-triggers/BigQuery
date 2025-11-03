@@ -9,7 +9,7 @@ locals {
   }
 }
 module "bigquery" {
-  source = "./modules/bigquery"
+  source = "./modules/bg"
 
   for_each = local.dataset_config
 

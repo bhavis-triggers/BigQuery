@@ -3,13 +3,13 @@ variable "dataset_id"{
     default = "example_dataset_dev"
 }
 
-variable "labels"{
+/*variable "labels"{
     type=map(string)
     validation {
         condition = contains(keys(var.labels), "app-id") && contains(keys(var.labels), "app-own") && contains(keys(var.labels), "res-name")
         error_message = "You must provide mandatory labels: environment and managed_by."
   }
-}
+}*/
 variable "gcp_project_id" {
   description = "The GCP project ID"
   type        = string

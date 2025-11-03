@@ -19,7 +19,7 @@ locals {
     }
   ])
 }
-module "bigquery" {
+module "dataset" {
   source = "./modules/bg"
 
   for_each = local.dataset_config

@@ -4,6 +4,7 @@ locals {
   # Mandatory labels defined in root (global)
   default_label = {           #default labels - user provides mandatory or custom labels
     environment = var.environment
+    #project_id = var.gcp_project_id
     #app-id = var.app-id
     #app-own = var.app-own
     #res-name = var.res-name
@@ -22,10 +23,10 @@ locals {
 module "dataset" {
   source = "./modules/bg"
 
-  for_each = local.dataset_config
+  #for_each = local.dataset_config
 
-  dataset_id = each.value.dataset_id
-
+  dataset = local.dataset
+  project = var.gcp_project_id
   # Send merged mandatory + custom labels
   labels = merge(
     local.mandatory_labels,

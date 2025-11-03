@@ -1,5 +1,5 @@
 locals {
-  yaml_config     = yamldecode(file(var.config_file))
+  cfg     = yamldecode(file(var.config_file))
 
   # Mandatory labels defined in root (global)
   default_label = {           #default labels - user provides mandatory or custom labels
@@ -16,7 +16,7 @@ locals {
       description                 = try(ds.description, null)
       access_roles                = try(ds.access_roles, {})
       location                    = try(ds.location, "asia-south2")
-      labels                      = merge(local.mandatory_labels, try(ds.labels,{}))
+      labels                      = merge(local.default_labels, try(ds.labels,{}))
     }
   ])
 }

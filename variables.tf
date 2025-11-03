@@ -10,7 +10,20 @@ variable "env"{
     description="working environment gets tagged"
     default = "dev"
 }
-
+variable "gcp_project_id" {
+  description = "The GCP project ID"
+  type        = string
+  validation{
+    condition = length(var.gcp_project_id) > 6 && length(var.gcp_project_id) <=25
+    error_message = "Project ID must be between 6 to 20"
+  }
+  default = "gleaming-nomad-474505-r3"
+}
+variable "gcp_region" {
+  description = "The GCP region"
+  type        = string
+  default = "asia-south2"
+}  
 variable "resource_tags"{
     type = map(string)
     default = {}

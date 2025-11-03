@@ -3,7 +3,7 @@ resource "google_bigquery_dataset" "dataset" {
     dataset_id = each.value.dataset_id
     friendly_name               = each.value.dataset_name
     description                 = each.value.dataset_desc
-    location                    = each.value.location
+    location                    = var.gcp_region
     labels                      = each.value.labels
     project = var.gcp_project_id
     /*dynamic "access"{

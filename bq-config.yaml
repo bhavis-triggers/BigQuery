@@ -1,0 +1,9 @@
+datasets:
+  marketing:
+    dataset_id: "mktg_dataset"
+    labels:
+      owner: "marketing"
+      sensitivity: "high"
+
+  finance:
+    dataset_id: "fin_dataset"

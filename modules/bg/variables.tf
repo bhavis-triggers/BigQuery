@@ -34,7 +34,7 @@ variable "access"{
     default=[]
 }
 
-variable "datasets"{
+variable "dataset"{
     type = list(object({
         dataset_id = string
         dataset_name = optional(string)

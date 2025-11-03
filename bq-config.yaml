@@ -1,8 +1,8 @@
 dataset:
   marketing:
-    id: "mktg_dataset"
-    name: "mktg_dataset"
-    description: "testing"
+    dataset_id: "mktg_dataset"
+    dataset_name: "mktg_dataset"
+    dataset_desc: "testing"
     labels:
       owner: "marketing"
       sensitivity: "high"

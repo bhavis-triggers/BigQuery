@@ -41,12 +41,15 @@ variable "environment" {
 
 variable "app-id"{
   type = string
+  default = "hid"
 }
 
 variable "app-own"{
   type = string
+  default = "App00"
 }
 
 variable "res-name"{
   type = string
+  default = "Apsv"
 }

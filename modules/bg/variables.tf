@@ -40,7 +40,7 @@ variable "datasets"{
         dataset_name = optional(string)
         dataset_desc = optional(string)
         labels = map(string)
-        iam_bindings=optional(list(object{
+        iam_bindings = optional(list(object{
             role = optional(string)
             group_by_email = optional(string)
             user_by_email = optional(string)

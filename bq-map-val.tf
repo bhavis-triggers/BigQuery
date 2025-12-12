@@ -9,7 +9,7 @@ locals {
     app-own = var.app-own
     res-name = var.res-name
   }
-  role_map{
+  role_map = {
     "owner" = "roles/bigquery.dataOwner"
     "writer" = "roles/bigquery.dataEditor"
     "reader" = "roles/bigquery.dataViewer"
@@ -29,8 +29,8 @@ locals {
       lower(env) == lower(var.env) ? flatten([
         for primitive, members in roles :
         contains(keys(local.role_map), primitive) ? concat(
-          [for g in try(members.groups,[]) : {role = local.role_map[primitive], group_by_email=g}]
-          [for g in try(members.service_accounts,[]) : {role = local.role_map[primitive], user_by_email=sa}]
+          [for g in try(members.groups,[]) : {role = local.role_map[primitive], group_by_email=g}],
+          [for g in try(members.service_accounts,[]) : {role = local.role_map[primitive], user_by_email=sa}],
           [for g in try(members.users,[]) : {role = local.role_map[primitive], user_by_email=u}]
         ) : []
       ]) :[]
@@ -38,7 +38,7 @@ locals {
     }
   ])
 }
-module "dataset" {
+/*module "dataset" {
   source = "./modules/bg"
 
   #for_each = local.dataset_config
@@ -50,11 +50,11 @@ module "dataset" {
   #  local.default_label,
   #  try(each.value.labels, {})   # safe fallback if YAML missing
   #)
-}
+}*/
 
 module "bigquery_reservation" {
   for_each = local.reservation_config
-  source = "./modules/reservation"
+  source = "./modules/bg/reservation"
   project-id = each.value.project-id
   location = each.value.location
   reserve-name = each.value.reserve-name

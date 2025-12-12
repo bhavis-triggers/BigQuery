@@ -57,6 +57,7 @@ module "bigquery_reservation" {
   source = "./modules/bg/reservation"
   project-id = each.value.project-id
   location = each.value.location
+  slot = each.value.slot
   reserve-name = each.value.reserve-name
   edition = each.value.edition
   sec_loc = each.value.sec_loc

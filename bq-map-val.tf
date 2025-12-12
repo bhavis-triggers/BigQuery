@@ -51,6 +51,17 @@ module "dataset" {
   #  try(each.value.labels, {})   # safe fallback if YAML missing
   #)
 }
+
+module "bigquery_reservation" {
+  for_each = local.reservation_config
+  source = "./modules/reservation"
+  project-id = each.value.project-id
+  location = each.value.location
+  reserve-name = each.value.reserve-name
+  edition = each.value.edition
+  sec_loc = each.value.sec_loc
+  assign_projects = each.value.assign_projects
+}
 /*locals{
     cfg = yamldecode(file("${path.module}/bq-config.yaml"))
 

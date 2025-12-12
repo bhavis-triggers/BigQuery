@@ -13,6 +13,6 @@ resource "google_bigquery_reservation_assignment" "assignment" {
     for_each    = var.assign_projects
     assignee    = "projects/${each.key}"
     job_type    = each.value.job_type
-    reservation = google_bigquery_reservation.reservation.name
+    reservation = google_bigquery_reservation.reservations.name
     location    = var.location
 }

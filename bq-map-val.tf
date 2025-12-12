@@ -24,7 +24,13 @@ locals {
       access_roles                = try(ds.access_roles, {})
       location                    = try(ds.location, "asia-south2")
       labels                      = merge(local.default_label, try(ds.labels,{}))
-      iam_bindings = flatten([
+      iam_bindings = {
+        role = ""
+        group_by_email = ""
+        user_by_email = ""
+      }
+    
+      /*flatten([
         for env, roles in try(ds.access_roles, {}) :
       lower(env) == lower(var.env) ? flatten([
         for primitive, members in roles :
@@ -34,7 +40,7 @@ locals {
           [for g in try(members.users,[]) : {role = local.role_map[primitive], user_by_email=u}]
         ) : []
       ]) :[]
-      ])
+      ])*/
     }
   ])
 }

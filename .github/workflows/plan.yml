@@ -3,7 +3,7 @@ name: terraform initializing
 on:
   push:
     branches:
-      - main #feature-*
+      - feature-datasets
 
 jobs:
   terraform-chg:

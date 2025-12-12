@@ -10,6 +10,7 @@ locals {
             assign_projects = {
                 "gleaming-nomad-474505-r3" = { job_type = "QUERY" }
                 "lunar-caster-481015-c0" = { job_type = "QUERY" }
+                "careful-alloy-481017-m8" = { job_type = "CONTINUOUS" }
             }
         }
     }

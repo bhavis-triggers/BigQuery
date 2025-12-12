@@ -3,7 +3,7 @@ name: terraform initializing
 on:
   push:
     branches:
-      - feature-*
+      - main #feature-*
 
 jobs:
   terraform-chg:
@@ -27,6 +27,8 @@ jobs:
           #echo "terraform plan"
       - name: terraform plan
         run: terraform plan
+      #- name: terraform apply
+      #  run: terraform apply --auto-approve
 
 
       

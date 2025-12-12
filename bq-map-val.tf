@@ -9,14 +9,32 @@ locals {
     app-own = var.app-own
     res-name = var.res-name
   }
+  role_map{
+    "owner" = "roles/bigquery.dataOwner"
+    "writer" = "roles/bigquery.dataEditor"
+    "reader" = "roles/bigquery.dataViewer"
+    "admin" = "roles/bigquery.admin"
+    "customEditor" = "organizations/208304944027/roles/BigQueryDataEditor"
+  }
   dataset = flatten([
     for ds in local.cfg["dataset"] : {
       dataset_id = "${ds.dataset_id}_${var.env}"
       friendly_name               = try("${ds.dataset_name}", ds.dataset_id)
       description                 = try(ds.dataset_desc, null)
-      #access_roles                = try(ds.access_roles, {})
+      access_roles                = try(ds.access_roles, {})
       location                    = try(ds.location, "asia-south2")
       labels                      = merge(local.default_label, try(ds.labels,{}))
+      iam_bindings = flatten([
+        for env, roles in try(ds.access_roles, {}) :
+      lower(env) == lower(var.env) ? flatten([
+        for primitive, members in roles :
+        contains(keys(local.role_map), primitive) ? concat(
+          [for g in try(members.groups,[]) : {role = local.role_map[primitive], group_by_email=g}]
+          [for g in try(members.service_accounts,[]) : {role = local.role_map[primitive], user_by_email=sa}]
+          [for g in try(members.users,[]) : {role = local.role_map[primitive], user_by_email=u}]
+        ) : []
+      ]) :[]
+      ])
     }
   ])
 }

@@ -3,7 +3,7 @@ locals {
         dev = {
             project-id = "gleaming-nomad-474505-r3"
             location = "us-east4"
-            reserve-name = "marketing-${locals.project-id}-000897-bg-resv"
+            reserve-name = "marketing-agentassist"
             slot = 0
             edition = "ENTERPRISE_PLUS"
             sec_loc = "us-central1"

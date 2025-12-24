@@ -69,6 +69,14 @@ module "bigquery_reservation" {
   #sec_loc = each.value.sec_loc
   assign_projects = each.value.assign_projects
 }
+
+module "bg_replica"{
+  source = "./modules/bg/dt_test"
+  dataset_id = "replica dataset"
+  location = "us-east4"
+  replica_location = "us-central1"
+  project = var.gcp_project_id
+}
 /*locals{
     cfg = yamldecode(file("${path.module}/bq-config.yaml"))
 

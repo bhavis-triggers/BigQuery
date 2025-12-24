@@ -20,10 +20,10 @@ variable "slot" {
     type = number
 }
 
-variable "sec_loc" {
+/*variable "sec_loc" {
     type = string
     default = null
-}
+}*/
 
 variable "assign_projects" {
     type = map(object({

@@ -66,7 +66,7 @@ module "bigquery_reservation" {
   slot = each.value.slot
   reserve-name = "${each.value.reserve-name}-${each.value.project-id}-0004678-bg-reserv"
   edition = each.value.edition
-  sec_loc = each.value.sec_loc
+  #sec_loc = each.value.sec_loc
   assign_projects = each.value.assign_projects
 }
 /*locals{

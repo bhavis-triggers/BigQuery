@@ -6,7 +6,6 @@ resource "google_bigquery_reservation" "reservations" {
     edition = var.edition
     ignore_idle_slots = false
     concurrency = 0
-    secondary_location = var.sec_loc
 }
 
 resource "google_bigquery_reservation_assignment" "assignment" {

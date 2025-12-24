@@ -16,8 +16,10 @@ resource "google_bigquery_dataset" "dataset" {
     }
 }
 
-locals {
-    bg_replica_location = "us-central1"
+resource "google_bigquery_dataset" "dttest" {
+    dataset_id = var.dataset_id
+    location = var.gcp_region
+    project = var.gcp_project_id
 }
 
 resource "null_resource" "dataset_dep" {
@@ -27,6 +29,6 @@ resource "null_resource" "dataset_dep" {
     ]
     provisioner "local-exec" {
         command = "echo Dataset ${each.key} created."
-        command = "bq query --nouse_legacy_sql=false 'ALTER SCHEMA `${var.gcp_project_id}.${each.value.dataset_id}` ADD REPLICA ${local.bg_replica_location}'"
+        command = "bq query --nouse_legacy_sql=false 'ALTER SCHEMA `${var.gcp_project_id}.${each.value.dataset_id}` ADD REPLICA ${var.replica_location}'"
     }
 }

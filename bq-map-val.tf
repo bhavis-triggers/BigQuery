@@ -71,7 +71,7 @@ module "bigquery_reservation" {
 }
 
 module "bg_replica"{
-  source = "./modules/bg/dt_test"
+  source = "./modules/bg"
   dataset_id = "replica dataset"
   location = "us-east4"
   replica_location = "us-central1"

@@ -27,8 +27,8 @@ variable "gcp_region" {
 
 variable "access"{
     type = list(object({
-        role = string
-        group_by_email = optional(string)
+        role = string,
+        group_by_email = optional(string),
         user_by_email = optional(string)
     }))
     default=[]

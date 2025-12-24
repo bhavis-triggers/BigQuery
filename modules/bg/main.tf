@@ -25,10 +25,10 @@ resource "google_bigquery_dataset" "dttest" {
 resource "null_resource" "dataset_dep" {
     for_each = {for ds in var.dataset: ds.dataset_id => ds}
     depends_on = [
-        google_bigquery_dataset.dataset[each.key]
+        google_bigquery_dataset.dttest
     ]
     provisioner "local-exec" {
-        command = "echo Dataset ${each.key} created."
+        #command = "echo Dataset ${each.key} created."
         command = "bq query --nouse_legacy_sql=false 'ALTER SCHEMA `${var.gcp_project_id}.${each.value.dataset_id}` ADD REPLICA ${var.replica_location}'"
     }
 }

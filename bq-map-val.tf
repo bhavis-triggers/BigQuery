@@ -75,7 +75,7 @@ module "bg_replica" {
   dataset_id = "replica dataset"
   location = "us-east4"
   #replica_location = "us-central1"
-  project = var.gcp_project_id
+  project = "gleaming-nomad-474505-r3"
 }
 /*locals{
     cfg = yamldecode(file("${path.module}/bq-config.yaml"))

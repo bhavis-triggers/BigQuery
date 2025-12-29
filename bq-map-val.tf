@@ -142,13 +142,21 @@ resource "google_bigquery_dataset" "dttest" {
 resource "null_resource" "dataset_dep" {
     #for_each = {for ds in var.dataset: ds.dataset_id => ds}
     
-    provisioner "local-exec" {
-        #command = "echo Dataset ${each.key} created."
+    /*provisioner "local-exec" {
+        command = "echo Dataset ${each.key} created."
         command = "bq query --use_legacy_sql=false \"ALTER SCHEMA `${var.gcp_project_id}.${google_bigquery_dataset.dttest.dataset_id}` ADD REPLICA `replicadataset1` OPTIONS(location=${var.gcp_replica_region})\""
-    }
+    }*/
     depends_on = [
         google_bigquery_dataset.dttest
     ]
+    provisioner "local-exec" {
+      command = "chmod +x replic.sh"
+    }
+  
+    provisioner "local-exec" {
+      command = "./replic.sh ${var.gcp_project_id} dttest"
+    }
+
     /*provisioner "local-exec" {
       command = <<EOT
       bq query --location=US --use_legacy_sql=false "

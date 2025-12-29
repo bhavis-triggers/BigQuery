@@ -1,4 +1,4 @@
-resource "google_bigquery_reservation" "reservations" {
+/*resource "google_bigquery_reservation" "reservations" {
     name    = var.reserve-name
     project = var.project-id
     location = var.location
@@ -14,4 +14,4 @@ resource "google_bigquery_reservation_assignment" "assignment" {
     job_type    = each.value.job_type
     reservation = google_bigquery_reservation.reservations.name
     location    = var.location
-}
+}*/

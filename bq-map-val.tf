@@ -56,7 +56,7 @@ locals {
   #  local.default_label,
   #  try(each.value.labels, {})   # safe fallback if YAML missing
   #)
-}*/
+}
 
 module "bigquery_reservation" {
   for_each = local.reservation_config
@@ -68,13 +68,13 @@ module "bigquery_reservation" {
   edition = each.value.edition
   #sec_loc = each.value.sec_loc
   assign_projects = each.value.assign_projects
-}
+}*/
 
 module "bg_replica" {
   source = "./modules/bg"
   dataset_id = "replica dataset"
   location = "us-east4"
-  replica_location = "us-central1"
+  #replica_location = "us-central1"
   project = var.gcp_project_id
 }
 /*locals{

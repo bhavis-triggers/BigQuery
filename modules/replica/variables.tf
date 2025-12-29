@@ -3,10 +3,10 @@ variable "location" {
   type        = string
 } 
 
-variable "replica_location" {
+/*variable "replica_location" {
   description = "The GCP region"
   type        = string"
-} 
+} */
 
 variable "dataset_id"{
     type= string

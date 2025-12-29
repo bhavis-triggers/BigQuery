@@ -1,4 +1,4 @@
-resource "google_bigquery_dataset" "dataset" {
+/*resource "google_bigquery_dataset" "dataset" {
     for_each = {for ds in var.dataset: ds.dataset_id => ds}
     dataset_id = each.value.dataset_id
     friendly_name               = each.value.dataset_name
@@ -14,5 +14,5 @@ resource "google_bigquery_dataset" "dataset" {
             user_by_email  = try(access.value.user_by_email, null)
         }
     }
-}
+}*/
 

@@ -1,7 +1,7 @@
-variable "dataset_id"{
+/*variable "dataset_id"{
     type= string
     default = "example_dataset_dev"
-}
+}*/
 
 /*variable "labels"{
     type=map(string)
@@ -10,7 +10,7 @@ variable "dataset_id"{
         error_message = "You must provide mandatory labels: environment and managed_by."
   }
 }*/
-variable "gcp_project_id" {
+/*variable "gcp_project_id" {
   description = "The GCP project ID"
   type        = string
   validation{
@@ -54,4 +54,4 @@ variable "dataset"{
         error_message = "You must provide mandatory labels: environment and managed_by."
         }*/
     }))
-}
+}*/

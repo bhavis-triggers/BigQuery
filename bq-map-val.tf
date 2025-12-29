@@ -144,7 +144,7 @@ resource "null_resource" "dataset_dep" {
     
     provisioner "local-exec" {
         #command = "echo Dataset ${each.key} created."
-        command = "bq query --use_legacy_sql=false 'ALTER SCHEMA `${var.gcp_project_id}.${google_bigquery_dataset.dttest.dataset_id}` ADD REPLICA `replicadataset1` OPTIONS(location=${var.gcp_replica_region})'"
+        command = "bq query --use_legacy_sql=false \"ALTER SCHEMA `${var.gcp_project_id}.${google_bigquery_dataset.dttest.dataset_id}` ADD REPLICA `replicadataset1` OPTIONS(location=${var.gcp_replica_region})\""
     }
     depends_on = [
         google_bigquery_dataset.dttest

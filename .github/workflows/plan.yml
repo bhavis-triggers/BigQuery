@@ -25,10 +25,12 @@ jobs:
         run: terraform validate
           #echo ""
           #echo "terraform plan"
-      - name: terraform plan
-        run: terraform plan
-      - name: terraform apply
-        run: terraform apply --auto-approve
+      #- name: terraform plan
+      #  run: terraform plan
+      - name : terraform destroy
+        run: terraform destroy --auto-approve
+      #- name: terraform apply
+      #  run: terraform apply --auto-approve
 
 
       

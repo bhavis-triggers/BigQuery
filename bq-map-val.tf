@@ -127,13 +127,12 @@ resource "google_bigquery_dataset" "replica" {
   project    = "gleaming-nomad-474505-r3"
   location   = "us-central1"
 
-  replica_configuration {
+  linked_dataset {
     source_dataset {
       project_id = "gleaming-nomad-474505-r3"
       dataset_id = google_bigquery_dataset.dttest.dataset_id
     }
   }
-
   depends_on = [
     google_bigquery_dataset.dttest
   ]

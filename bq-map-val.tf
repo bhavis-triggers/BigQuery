@@ -68,7 +68,7 @@ module "bigquery_reservation" {
   edition = each.value.edition
   #sec_loc = each.value.sec_loc
   assign_projects = each.value.assign_projects
-}*/
+}
 
 module "bg_replica" {
   source = "./modules/replica"
@@ -76,7 +76,7 @@ module "bg_replica" {
   location = "us-east4"
   #replica_location = "us-central1"
   project = "gleaming-nomad-474505-r3"
-}
+}*/
 /*locals{
     cfg = yamldecode(file("${path.module}/bq-config.yaml"))
 
@@ -113,3 +113,27 @@ resource "google_service_account" "bqowner" {
   account_id = "bqowner"
   display_name = "Servie account for big query dataset"
 }*/
+
+resource "google_bigquery_dataset" "dttest" {
+    dataset_id = "replica dataset"
+    location = "us-east4"
+    project = "gleaming-nomad-474505-r3"
+}
+
+resource "null_resource" "dataset_dep" {
+    /*for_each = {for ds in var.dataset: ds.dataset_id => ds}
+    */
+    #provisioner "local-exec" {
+        #command = "echo Dataset ${each.key} created."
+        #command = "bq query --nouse_legacy_sql=false 'ALTER SCHEMA `${var.gcp_project_id}.${each.value.dataset_id}` ADD REPLICA ${var.replica_location}'"
+    #}
+    depends_on = [
+        google_bigquery_dataset.dttest
+    ]
+    replica_configuration {
+        source_dataset {
+            project_id = "gleaming-nomad-474505-r3"
+            dataset_id = google_bigquery_dataset.dttest.dataset_id
+        }
+    }
+}

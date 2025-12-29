@@ -1,4 +1,4 @@
-resource "google_bigquery_dataset" "dttest" {
+/*resource "google_bigquery_dataset" "dttest" {
     dataset_id = var.dataset_id
     location = var.location
     project = var.gcp_project_id
@@ -19,4 +19,4 @@ resource "null_resource" "dataset_dep" {
             dataset_id = google_bigquery_dataset.dttest.dataset_id
         }
     }
-}
+}*/

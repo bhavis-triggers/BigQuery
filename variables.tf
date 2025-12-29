@@ -22,8 +22,13 @@ variable "gcp_project_id" {
 variable "gcp_region" {
   description = "The GCP region"
   type        = string
-  default = "asia-south2"
+  default = "us-east4"
 }  
+variable "gcp_replica_region" {
+  description = "The GCP replica region"
+  type        = string
+  default = "us-central1"
+} 
 variable "resource_tags"{
     type = map(string)
     default = {}

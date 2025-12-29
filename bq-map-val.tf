@@ -70,7 +70,7 @@ module "bigquery_reservation" {
   assign_projects = each.value.assign_projects
 }
 
-module "bg_replica"{
+module "bg_replica" {
   source = "./modules/bg"
   dataset_id = "replica dataset"
   location = "us-east4"

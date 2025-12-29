@@ -130,6 +130,7 @@ resource "null_resource" "dataset_dep" {
     depends_on = [
         google_bigquery_dataset.dttest
     ]
+    provider = google-beta
     replica_configuration {
         source_dataset {
             project_id = "gleaming-nomad-474505-r3"

@@ -144,12 +144,22 @@ resource "null_resource" "dataset_dep" {
     
     provisioner "local-exec" {
         #command = "echo Dataset ${each.key} created."
-        command = "bq query --nouse_legacy_sql=false 'ALTER SCHEMA `${var.gcp_project_id}.${google_bigquery_dataset.dttest.dataset_id}` ADD REPLICA ${var.gcp_replica_region}'"
+        command = "bq query --use_legacy_sql=false 'ALTER SCHEMA `${var.gcp_project_id}.${google_bigquery_dataset.dttest.dataset_id}` ADD REPLICA `replicadataset_r` OPTIONS(location=${var.gcp_replica_region})'"
     }
     depends_on = [
         google_bigquery_dataset.dttest
     ]
-    /*provider = google-beta
+    /*provisioner "local-exec" {
+      command = <<EOT
+      bq query --location=US --use_legacy_sql=false "
+      ALTER SCHEMA `$${BQ_PROJECT}.dttest` 
+      ADD REPLICA \`us_east4_replica\` OPTIONS(
+      location = 'us-east4')"
+    EOT
+    environment = {
+      BQ_PROJECT = "gleaming-nomad-474505-r3"
+    }
+    provider = google-beta
     replica_configuration {
         source_dataset {
             project_id = "gleaming-nomad-474505-r3"

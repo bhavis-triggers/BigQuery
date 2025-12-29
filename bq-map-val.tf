@@ -115,7 +115,7 @@ resource "google_service_account" "bqowner" {
 }*/
 
 resource "google_bigquery_dataset" "dttest" {
-    dataset_id = "replica dataset"
+    dataset_id = "replicadataset"
     location = "us-east4"
     project = "gleaming-nomad-474505-r3"
 }

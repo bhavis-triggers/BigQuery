@@ -9,7 +9,8 @@ echo "Adding replicas to ${PROJECT}.${DATASET}..."
 
 #gcloud auth list
 # Add US-East4 replica
-bq query --location=US "ALTER DATASET \`${PROJECT}.${DATASET}\` ADD REPLICA \`us_east4_replica\` OPTIONS(location='us-central1')"
+#bq query --project_id=$PROJECT --location=US "ALTER DATASET \`${PROJECT}.${DATASET}\` ADD REPLICA \`us_east4_replica\` OPTIONS(location='us-central1')"
+bq query --use_legacy_sql=false 'ALTER SCHEMA `gleaming-nomad-474505-r3.replicadataset` ADD REPLICA `replica1` OPTIONS (location=us-central1)'
 echo "✓ US-East4 replica added"
 
 # Add Asia replica  

@@ -158,7 +158,7 @@ LOCATION="${var.gcp_replica_region}"
 ACCESS_TOKEN=$(gcloud auth print-access-token)
 
 # Check if replica already exists (idempotency)
-STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+STATUS=$(curl -s -o /dev/null -w "%%{http_code}" \
   -H "Authorization: Bearer $ACCESS_TOKEN" \
   "https://bigquery.googleapis.com/bigquery/v2/projects/$PROJECT_ID/datasets/$REPLICA_DATASET")
 

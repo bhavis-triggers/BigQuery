@@ -3,7 +3,7 @@
 set -e  # Exit on any error
 
 PROJECT="gleaming-nomad-474505-r3"
-DATASET="replicadataset1"
+DATASET="replicadataset"
 
 echo "Adding replicas to ${PROJECT}.${DATASET}..."
 

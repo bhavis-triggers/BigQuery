@@ -119,6 +119,9 @@ resource "google_bigquery_dataset" "dttest" {
     location = "us-east4"
     project = "gleaming-nomad-474505-r3"
 }
+locals {
+  replica_dataset_id = "${google_bigquery_dataset.dttest.dataset_id}_replica"
+}
 
 /*resource "google_bigquery_dataset" "replica" {
   provider = google-beta
@@ -138,20 +141,65 @@ resource "google_bigquery_dataset" "dttest" {
   ]
 }*/
 
+resource "null_resource" "dataset_replica" {
+  depends_on = [google_bigquery_dataset.dttest]
 
-resource "null_resource" "dataset_dep" {
+  provisioner "local-exec" {
+    interpreter = ["/bin/bash", "-c"]
+
+    command = <<EOT
+set -e
+
+PROJECT_ID="${var.gcp_project_id}"
+PRIMARY_DATASET="${google_bigquery_dataset.dttest.dataset_id}"
+REPLICA_DATASET="${local.replica_dataset_id}"
+LOCATION="${var.gcp_replica_region}"
+
+ACCESS_TOKEN=$(gcloud auth print-access-token)
+
+# Check if replica already exists (idempotency)
+STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  "https://bigquery.googleapis.com/bigquery/v2/projects/$PROJECT_ID/datasets/$REPLICA_DATASET")
+
+if [ "$STATUS" = "200" ]; then
+  echo "Replica dataset already exists: $REPLICA_DATASET"
+  exit 0
+fi
+
+echo "Creating replica dataset: $REPLICA_DATASET"
+
+curl -s -X POST \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://bigquery.googleapis.com/bigquery/v2/projects/$PROJECT_ID/datasets/$PRIMARY_DATASET/replicas" \
+  -d '{
+    "datasetReference": {
+      "projectId": "'"$PROJECT_ID"'",
+      "datasetId": "'"$REPLICA_DATASET"'"
+    },
+    "location": "'"$LOCATION"'"
+  }'
+
+echo "Replica created successfully"
+EOT
+  }
+}
+
+
+/*resource "null_resource" "dataset_dep" {
     #for_each = {for ds in var.dataset: ds.dataset_id => ds}
     
-    /*provisioner "local-exec" {
+    provisioner "local-exec" {
         command = "echo Dataset ${each.key} created."
         command = "bq query --use_legacy_sql=false \"ALTER SCHEMA `${var.gcp_project_id}.${google_bigquery_dataset.dttest.dataset_id}` ADD REPLICA `replicadataset1` OPTIONS(location=${var.gcp_replica_region})\""
-    }*/
+    }
     depends_on = [
         google_bigquery_dataset.dttest
     ]
-    /*provisioner "local-exec" {
+    provisioner "local-exec" {
       command = "chmod +x replic.sh"
-    }*/
+    }
   
     provisioner "local-exec" {
       command = "./replic.sh ${var.gcp_project_id} dttest"
@@ -160,7 +208,7 @@ resource "null_resource" "dataset_dep" {
       }
     }
 
-    /*provisioner "local-exec" {
+    provisioner "local-exec" {
       command = <<EOT
       bq query --location=US --use_legacy_sql=false "
       ALTER SCHEMA `$${BQ_PROJECT}.dttest` 
@@ -176,5 +224,5 @@ resource "null_resource" "dataset_dep" {
             project_id = "gleaming-nomad-474505-r3"
             dataset_id = google_bigquery_dataset.dttest.dataset_id
         }
-    }*/
-}
+    }
+}*/

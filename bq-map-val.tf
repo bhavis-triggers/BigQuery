@@ -149,12 +149,15 @@ resource "null_resource" "dataset_dep" {
     depends_on = [
         google_bigquery_dataset.dttest
     ]
-    provisioner "local-exec" {
+    /*provisioner "local-exec" {
       command = "chmod +x replic.sh"
-    }
+    }*/
   
     provisioner "local-exec" {
       command = "./replic.sh ${var.gcp_project_id} dttest"
+        environment = {
+          GOOGLE_APPLICATION_CREDENTIALS = "/home/runner/.config/gcloud/application_default_credentials.json"
+      }
     }
 
     /*provisioner "local-exec" {

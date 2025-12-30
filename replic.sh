@@ -7,7 +7,7 @@ DATASET="replicadataset1"
 
 echo "Adding replicas to ${PROJECT}.${DATASET}..."
 
-gcloud auth list
+#gcloud auth list
 # Add US-East4 replica
 bq query --location=US "ALTER DATASET \`${PROJECT}.${DATASET}\` ADD REPLICA \`us_east4_replica\` OPTIONS(location='us-central1')"
 echo "✓ US-East4 replica added"

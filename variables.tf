@@ -38,6 +38,10 @@ variable "config_file" {
   type    = string
   default = "bq-config.yaml"
 }
+variable "reservation_file" {
+  type    = string
+  default = "res-config.yaml"
+}
 
 variable "environment" {
   type    = string

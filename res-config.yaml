@@ -16,10 +16,9 @@ environments:
 
           - assignee_type: FOLDER
             assignee_id: "123456789012"
-            job_type: PIPELINE
 
       etl-res:
-        slot_capacity: 100
+        slot_capacity: 50
         edition: ENTERPRISE
         ignore_idle_slots: true
 
@@ -34,7 +33,7 @@ environments:
 
     reservations:
       analytics-res:
-        slot_capacity: 100
+        slot_capacity: 50
         edition: ENTERPRISE
         ignore_idle_slots: false
 

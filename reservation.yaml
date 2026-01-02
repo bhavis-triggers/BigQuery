@@ -1,0 +1,22 @@
+
+reservations:
+  - name: dev-slot-reservation
+    project_id: gleaming-nomad-474505-r3
+    location: us-east4
+    slot_capacity: 50
+    assignments:
+    - assignee_type: PROJECT
+      assignee_id: my-dev-project
+      job_type: QUERY
+    - assignee_type: DATASET
+      assignee_id: my-dev-project:sales_ds
+
+  - name: prod-slot-reservation
+    project_id: gleaming-nomad-474505-r3
+    location: us-east4
+    slot_capacity: 50
+    assignments:
+    - assignee_type: PROJECT
+      assignee_id: my-prod-project
+    - assignee_type: DATASET
+      assignee_id: my-prod-project:finance_ds

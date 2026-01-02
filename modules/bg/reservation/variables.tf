@@ -39,3 +39,21 @@ variable "assign_projects" {
 variable "" {
     type = string
 }*/
+
+variable "reservations" {
+  type = map(object({
+    project_id    = string
+    location      = string
+    slot_capacity = number
+  }))
+}
+
+variable "assignments" {
+  type = list(object({
+    reservation_name = string
+    project_id       = string
+    location         = string
+    assignee_type    = string
+    assignee_id      = string
+  }))
+}

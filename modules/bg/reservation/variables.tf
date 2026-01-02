@@ -42,6 +42,7 @@ variable "" {
 
 variable "reservations" {
   type = map(object({
+    name = string
     project_id    = string
     location      = string
     slot_capacity = number

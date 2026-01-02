@@ -18,10 +18,10 @@ resource "google_bigquery_reservation_assignment" "assignment" {
 
 resource "google_bigquery_reservation" "reservation" {
   for_each = var.reservations
-
+  name         = each.value.name
   project      = each.value.project_id
   location     = each.value.location
-  reservation_id = each.key
+  #reservation_id = each.key
 
   slot_capacity = each.value.slot_capacity
 }

@@ -1,10 +1,10 @@
 locals {
-  reservation_config = yamldecode(
+  rese = yamldecode(
     file(var.reservation_file)
   )
 
   reservations = {
-    for r in local.reservation_config.reservations :
+    for r in local.rese.reservations :
     r.name => r
   }
 

@@ -141,7 +141,7 @@ locals {
   ]
 }*/
 
-resource "null_resource" "dataset_replica" {
+/*resource "null_resource" "dataset_replica" {
   depends_on = [google_bigquery_dataset.dttest]
 
   provisioner "local-exec" {
@@ -184,7 +184,7 @@ curl -s -X POST \
 echo "Replica created successfully"
 EOT
   }
-}
+}*/
 
 
 /*resource "null_resource" "dataset_dep" {

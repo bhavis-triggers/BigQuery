@@ -47,7 +47,7 @@ module "reservations" {
 
 module "assignments" {
   source = "./modules/new-assign"
-
+  depends_on = [module.reservations]
   for_each = {
     for a in local.assignments : a.key => a
   }

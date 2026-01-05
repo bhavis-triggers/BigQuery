@@ -11,14 +11,14 @@ locals {
         slot_capacity  = res.slot_capacity
         edition        = res.edition
         location       = res.location
-        assignments    = try(res.assignments, [])
+        #assignments    = try(res.assignments, [])
       }
     ]
   ])
 
   assignments = flatten([
     for r in local.reservations : [
-      for a in r.assignments : {
+      for a in try(r.assignments,[]) : {
         key           = "${r.env}-${r.name}-${a.project_id}-${a.job_type}"
         reservation   = r.name
         project_id    = a.project_id

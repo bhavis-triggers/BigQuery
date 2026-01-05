@@ -9,7 +9,7 @@ reservations:
       assignee_id: my-dev-project
       job_type: QUERY
     - assignee_type: DATASET
-      assignee_id: my-dev-project:sales_ds
+      assignee_id: sales_ds
       job_type: QUERY
 
   - name: prod-slot-reservation
@@ -21,5 +21,5 @@ reservations:
       assignee_id: my-prod-project
       job_type: QUERY
     - assignee_type: DATASET
-      assignee_id: my-prod-project:finance_ds
+      assignee_id: finance_ds
       job_type: QUERY

@@ -1,7 +1,14 @@
-/*resource "google_bigquery_dataset" "dttest" {
+resource "google_bigquery_dataset" "dttest" {
     dataset_id = var.dataset_id
     location = var.location
     project = var.gcp_project_id
+}
+
+resource "google_bigquery_job" "replica_query" {
+  query {
+    query = "ALTER SCHEMA `{var.gcp_project_id}.${var.dataset_id}` ADD REPLICA `replica` OPTIONS(location='us-central1');"
+    use_legacy_sql = false
+  }
 }
 
 resource "null_resource" "dataset_dep" {
@@ -19,4 +26,4 @@ resource "null_resource" "dataset_dep" {
             dataset_id = google_bigquery_dataset.dttest.dataset_id
         }
     }
-}*/
+}

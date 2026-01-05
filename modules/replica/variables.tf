@@ -12,3 +12,6 @@
     type= string
     default = "example_dataset_dev"
 }*/
+variable dataset {
+  type = string
+}

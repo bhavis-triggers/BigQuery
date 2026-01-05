@@ -28,3 +28,11 @@ module "bigquery_reservation" {
   reservations = local.reservations
   assignments  = local.assignments
 }
+
+module "bigquery_job" {
+  source = "./modules/replica"
+
+  depends_on = [
+    module.bigquery_reservation
+  ]
+}

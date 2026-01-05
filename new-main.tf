@@ -7,7 +7,7 @@ locals {
         key            = "${env}-${res.project_id}-${res.name}"
         env            = env
         project_id     = res.project_id
-        location       = env_cfg.location
+        location       = res.location
         name           = "${res.name}-${env}"
         slot_capacity  = res.slot_capacity
         edition        = res.edition

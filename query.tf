@@ -16,6 +16,7 @@ locals {
         location         = r.location
         assignee_type    = a.assignee_type
         assignee_id      = a.assignee_id
+        job_type        = try(a.job_type, null)
       }
     ]
   ])

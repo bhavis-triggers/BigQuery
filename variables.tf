@@ -40,7 +40,7 @@ variable "config_file" {
 }
 variable "reservation_file" {
   type    = string
-  default = "res-config.yaml"
+  default = "reservation.yaml"
 }
 
 variable "environment" {

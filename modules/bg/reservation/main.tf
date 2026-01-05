@@ -44,4 +44,5 @@ resource "google_bigquery_reservation_assignment" "assignment" {
     ? "projects/${each.value.assignee_id}"
     : "projects/${split(":", each.value.assignee_id)[0]}/datasets/${split(":", each.value.assignee_id)[1]}"
   )
+  job_type = each.value.job_type
 }

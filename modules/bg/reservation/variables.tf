@@ -56,6 +56,6 @@ variable "assignments" {
     location         = string
     assignee_type    = string
     assignee_id      = string
-    #job_type         = string
+    job_type         = string
   }))
 }

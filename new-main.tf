@@ -56,4 +56,5 @@ module "assignments" {
   location     = each.value.location
   reservation = each.value.reservation
   job_type    = each.value.job_type
+  assignee    = each.value.assignee
 }

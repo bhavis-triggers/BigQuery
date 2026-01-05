@@ -7,7 +7,7 @@ reservations:
     assignments:
     - assignee_type: PROJECT
       assignee_id: my-dev-project
-      job_type: QUERY
+      #job_type: QUERY
     - assignee_type: DATASET
       assignee_id: my-dev-project:sales_ds
 

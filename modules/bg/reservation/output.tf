@@ -1,3 +1,3 @@
 output "reservation_id" {
-    value = google_bigquery_reservation.reservations.name
+    value = google_bigquery_reservation.reservation.name
 }

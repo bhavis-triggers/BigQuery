@@ -31,7 +31,8 @@ module "bigquery_reservation" {
 
 module "bigquery_job" {
   source = "./modules/replica"
-
+  gcp_project_id = var.gcp_project_id
+  dataset_id    = module.bigquery_reservation.dataset_id
   depends_on = [
     module.bigquery_reservation
   ]

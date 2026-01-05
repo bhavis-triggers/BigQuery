@@ -1,3 +1,5 @@
 output "reservation_id" {
-    value = google_bigquery_reservation.reservation[each.key].name
+    value = [
+    for r in google_bigquery_reservation.reservation : r.name
+    ]
 }

@@ -10,3 +10,6 @@ variable "reservation" {
 variable "job_type" {
     type = string
 }
+variable "assignee" {
+    type = string
+}

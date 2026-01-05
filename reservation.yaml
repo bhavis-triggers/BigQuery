@@ -35,6 +35,7 @@ environments:
         assignments:
           - project_id: gleaming-nomad-474505-r3
             job_type: QUERY
+            assignee_id: careful-alloy-481017-m8
 
   prod:
     reservations:
@@ -46,6 +47,8 @@ environments:
         assignments:
           - project_id: gleaming-nomad-474505-r3
             job_type: QUERY
+            assignee_id: careful-alloy-481017-m8
           - project_id: gleaming-nomad-474505-r3
             job_type: PIPELINE
+            assignee_id: lunar-caster-481015-c0
 

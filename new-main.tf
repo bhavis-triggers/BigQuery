@@ -24,6 +24,7 @@ locals {
         project_id    = a.project_id
         location      = r.location
         job_type      = a.job_type
+        assignee     = a.assignee_id
       }
     ]
   ])

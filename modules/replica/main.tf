@@ -4,9 +4,9 @@ resource "google_bigquery_dataset" "dttest" {
     project = var.gcp_project_id
 }
 
-resource "google_bigquery_job" "replica_query" {
-  query {
-    query = "ALTER SCHEMA `{var.gcp_project_id}.${var.dataset_id}` ADD REPLICA `replica` OPTIONS(location='us-central1');"
+#resource "google_bigquery_job" "replica_query" {
+#  query {
+#    query = "ALTER SCHEMA `{var.gcp_project_id}.${var.dataset_id}` ADD REPLICA `replica` OPTIONS(location='us-central1');"
     use_legacy_sql = false
   }
 }

@@ -1,13 +1,13 @@
 
-reservations:
-  - name: dev-slot-reservation
-    project_id: gleaming-nomad-474505-r3
-    location: us-east4
-    slot_capacity: 50
-    assignments:
-    - assignee_type: DATASET
-      assignee_id: replicadataset
-      job_type: QUERY
+#reservations:
+#  - name: dev-slot-reservation
+#    project_id: gleaming-nomad-474505-r3
+#    location: us-east4
+#    slot_capacity: 50
+#    assignments:
+#    - assignee_type: DATASET
+#      assignee_id: replicadataset
+ #     job_type: QUERY
    # - assignee_type: DATASET
    #   assignee_id: sales_ds
    #   job_type: QUERY
@@ -23,3 +23,29 @@ reservations:
    # - assignee_type: DATASET
    #   assignee_id: finance_ds
    #   job_type: QUERY
+
+environments:
+  dev:
+    reservations:
+      - name: analytics
+        slot_capacity: 50
+        edition: ENTERPRISE
+        project_id: gleaming-nomad-474505-r3
+        location: us-east4
+        assignments:
+          - project_id: gleaming-nomad-474505-r3
+            job_type: QUERY
+
+  prod:
+    location: US
+    reservations:
+      - name: analytics
+        slot_capacity: 50
+        edition: ENTERPRISE
+        project_id: gleaming-nomad-474505-r3
+        assignments:
+          - project_id: gleaming-nomad-474505-r3
+            job_type: QUERY
+          - project_id: gleaming-nomad-474505-r3
+            job_type: PIPELINE
+

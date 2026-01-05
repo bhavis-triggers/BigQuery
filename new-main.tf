@@ -31,7 +31,7 @@ locals {
 
 
 module "reservations" {
-  source = "./modules/bigquery_reservation"
+  source = "./modules/new-reserv"
 
   for_each = {
     for r in local.reservations : r.key => r
@@ -45,7 +45,7 @@ module "reservations" {
 }
 
 module "assignments" {
-  source = "./modules/bigquery_assignment"
+  source = "./modules/new-assign"
 
   for_each = {
     for a in local.assignments : a.key => a

@@ -5,7 +5,6 @@ resource "google_bigquery_dataset" "dttest" {
 }
 
 resource "google_bigquery_job" "replica_query" {
-  depends_on = [var.dataset]
   query {
     query = "ALTER SCHEMA `{var.gcp_project_id}.${var.dataset_id}` ADD REPLICA `replica` OPTIONS(location='us-central1');"
     use_legacy_sql = false

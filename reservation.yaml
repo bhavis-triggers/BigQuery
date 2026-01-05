@@ -46,7 +46,7 @@ environments:
         location: us-east4
         assignments:
           - project_id: gleaming-nomad-474505-r3
-            job_type: QUERY
+            job_type: CONTINUOUS
             assignee_id: gleaming-nomad-474505-r3
           - project_id: gleaming-nomad-474505-r3
             job_type: PIPELINE

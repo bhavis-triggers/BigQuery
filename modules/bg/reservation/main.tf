@@ -38,11 +38,11 @@ resource "google_bigquery_reservation_assignment" "assignment" {
   reservation = google_bigquery_reservation.reservation[
     each.value.reservation_name
   ].id
-
-  assignee = (
-    each.value.assignee_type == "PROJECT"
-    ? "projects/${each.value.assignee_id}"
-    : "projects/${split(":", each.value.assignee_id)[0]}/datasets/${split(":", each.value.assignee_id)[1]}"
-  )
+  assignee = "projects/${each.value.assignee_id}"
+  #assignee = (
+  #  each.value.assignee_type == "PROJECT"
+  #  ? "projects/${each.value.assignee_id}"
+  #  : "projects/${split(":", each.value.assignee_id)[0]}/datasets/${split(":", each.value.assignee_id)[1]}"
+  #)
   job_type = each.value.job_type
 }

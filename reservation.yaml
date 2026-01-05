@@ -51,4 +51,12 @@ environments:
           - project_id: gleaming-nomad-474505-r3
             job_type: CONTINUOUS
             assignee_id: gleaming-nomad-474505-r3
+  uat:
+    reservations:
+      - name: analytics
+        slot_capacity: 50
+        edition: ENTERPRISE
+        project_id: gleaming-nomad-474505-r3
+        location: us-east4
+
 

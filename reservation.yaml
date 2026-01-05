@@ -37,12 +37,12 @@ environments:
             job_type: QUERY
 
   prod:
-    location: US
     reservations:
       - name: analytics
         slot_capacity: 50
         edition: ENTERPRISE
         project_id: gleaming-nomad-474505-r3
+        location: us-east4
         assignments:
           - project_id: gleaming-nomad-474505-r3
             job_type: QUERY

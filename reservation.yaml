@@ -5,21 +5,21 @@ reservations:
     location: us-east4
     slot_capacity: 50
     assignments:
-    - assignee_type: PROJECT
-      assignee_id: my-dev-project
+    - assignee_type: DATASET
+      assignee_id: replicadataset
       job_type: QUERY
    # - assignee_type: DATASET
    #   assignee_id: sales_ds
    #   job_type: QUERY
 
-  - name: prod-slot-reservation
-    project_id: gleaming-nomad-474505-r3
-    location: us-east4
-    slot_capacity: 50
-    assignments:
-    - assignee_type: PROJECT
-      assignee_id: my-prod-project
-      job_type: QUERY
+  #- name: prod-slot-reservation
+  #  project_id: gleaming-nomad-474505-r3
+  #  location: us-east4
+  #  slot_capacity: 50
+  #  assignments:
+  #  - assignee_type: PROJECT
+  #    assignee_id: my-prod-project
+  #    job_type: QUERY
    # - assignee_type: DATASET
    #   assignee_id: finance_ds
    #   job_type: QUERY

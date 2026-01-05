@@ -36,6 +36,9 @@ environments:
           - project_id: gleaming-nomad-474505-r3
             job_type: QUERY
             assignee_id: gleaming-nomad-474505-r3
+          - project_id: gleaming-nomad-474505-r3
+            job_type: PIPELINE
+            assignee_id: gleaming-nomad-474505-r3
 
   prod:
     reservations:
@@ -47,8 +50,5 @@ environments:
         assignments:
           - project_id: gleaming-nomad-474505-r3
             job_type: CONTINUOUS
-            assignee_id: gleaming-nomad-474505-r3
-          - project_id: gleaming-nomad-474505-r3
-            job_type: PIPELINE
             assignee_id: gleaming-nomad-474505-r3
 
